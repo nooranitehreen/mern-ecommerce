@@ -24,7 +24,10 @@ mongoose.connect(process.env.MONGODB_URI)
     console.error("Error connecting to MongoDB:", error);
  });
 
- const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173', 'https://your-netlify-app.netlify.app'];
+ const allowedOrigins = ['http://localhost:3000', 
+ 'http://localhost:5173', 
+ 'https://65a53fc694e272102fe17bce--incredible-dodol-ed1aa1.netlify.app/',
+ 'https://65a53effb1550b15a1c42cac--creative-semifreddo-764d50.netlify.app/'];
 
  app.use(cors({
   origin: function (origin, callback) {
