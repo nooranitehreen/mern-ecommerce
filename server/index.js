@@ -50,22 +50,29 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({
-    storage: storage,
-    limits: { fileSize: 1024 * 1024 * 5 }, 
+    storage: storage, 
 });
 
 
 
 //Creating Upload Endpoint for images
 app.use('/images', express.static('upload/images'));
+app.post("/upload", (req, res) => {
+    upload.single('product')(req, res, function (err) {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ success: 0, message: 'File upload failed.' });
+        }
 
-app.post("/upload", upload.single('product'), (req, res) => {
-    res.json({
-        success: 1,
-        image_url: `/images/${req.file.filename}`
+        console.log("req.body:", req.body);
+        console.log("req.file:", req.file);
+
+        res.json({
+            success: 1,
+            image_url: `/images/${req.file.filename}`
+        });
     });
 });
-
 //Schema for Creating Products
 
 const Product = mongoose.model("Product", {

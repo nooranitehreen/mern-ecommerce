@@ -9,7 +9,7 @@ const Popular = () => {
   const [popularProducts, setPopularProducts] = useState([]);
 
   useEffect(() => {
-    fetch('https://shopper-app-vhen.onrender.com/popularinwomen')
+    fetch('https://mern-ecommerce-shopper-app.onrender.com/popularinwomen')
     .then((response) => response.json())
     .then((data) => setPopularProducts(data));
   }, []);

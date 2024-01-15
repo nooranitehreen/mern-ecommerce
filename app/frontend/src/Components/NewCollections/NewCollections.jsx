@@ -9,7 +9,7 @@ const NewCollections = () => {
   const [new_collection, setNew_Collection] = useState([]);
 
   useEffect(() => {
-    fetch('https://shopper-app-vhen.onrender.com/newcollections')
+    fetch('https://mern-ecommerce-shopper-app.onrender.com/newcollections')
     .then((response) => response.json())
     .then((data) => setNew_Collection(data));
   }, [])
