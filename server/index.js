@@ -10,15 +10,11 @@ const { Console, log } = require("console");
 require('dotenv').config();
 const bcrypt = require("bcrypt");
 
-app.use(cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-   }));
+
+const allowedOrigins = ['http://localhost:3000', 
+ 'http://localhost:5173','https://app.netlify.com/teams/nooranitehreen/overview'];
+
+app.use(cors());
 app.use(express.json());
 
 
@@ -31,12 +27,6 @@ mongoose.connect(process.env.MONGODB_URI)
  .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
  });
-
- const allowedOrigins = ['http://localhost:3000', 
- 'http://localhost:5173'];
-
- 
-
 
 //API Creation
 
