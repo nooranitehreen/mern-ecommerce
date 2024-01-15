@@ -16,13 +16,26 @@ app.use(express.json());
 
 
 //Database Connection With MongoDB
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
     console.log("Connected to MongoDB");
  })
  .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
  });
+
+ const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173'];
+
+ app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+ }));
+
 
 //API Creation
 
