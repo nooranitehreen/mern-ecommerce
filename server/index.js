@@ -17,6 +17,13 @@ const allowedOrigins = ['http://localhost:3000',
 app.use(cors());
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); 
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+
 
 
 //Database Connection With MongoDB
@@ -41,9 +48,13 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
-})
+});
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 1024 * 1024 * 5 }, 
+});
 
-const upload = multer({storage : storage});
+
 
 //Creating Upload Endpoint for images
 app.use('/images', express.static('upload/images'));
