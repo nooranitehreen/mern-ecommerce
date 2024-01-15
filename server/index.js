@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
     console.error("Error connecting to MongoDB:", error);
  });
 
- const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173'];
+ const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173', 'https://your-netlify-app.netlify.app'];
 
  app.use(cors({
   origin: function (origin, callback) {
