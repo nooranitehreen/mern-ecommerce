@@ -11,7 +11,7 @@ require('dotenv').config();
 const bcrypt = require("bcrypt");
 
 const corsOptions = {
-    origin: 'https://65a60d375bb881783947b16c--papaya-squirrel-ecf8b0.netlify.app',
+    origin: 'https://app.netlify.com/teams/nooranitehreen/overview',
     credentials: true,
 };
 
