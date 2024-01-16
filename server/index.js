@@ -10,21 +10,15 @@ const { Console, log } = require("console");
 require('dotenv').config();
 const bcrypt = require("bcrypt");
 
+const corsOptions = {
+    origin: 'https://65a60d375bb881783947b16c--papaya-squirrel-ecf8b0.netlify.app',
+    credentials: true,
+};
 
-const allowedOrigins = ['http://localhost:3000', 
- 'http://localhost:5173','https://app.netlify.com/teams/nooranitehreen/overview'];
-
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); 
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
-
-
+app.options('*', cors(corsOptions));
 
 //Database Connection With MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -48,31 +42,20 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
-});
-const upload = multer({
-    storage: storage, 
-});
+})
 
-
+const upload = multer({storage : storage});
 
 //Creating Upload Endpoint for images
 app.use('/images', express.static('upload/images'));
-app.post("/upload", (req, res) => {
-    upload.single('product')(req, res, function (err) {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({ success: 0, message: 'File upload failed.' });
-        }
 
-        console.log("req.body:", req.body);
-        console.log("req.file:", req.file);
-
-        res.json({
-            success: 1,
-            image_url: `/images/${req.file.filename}`
-        });
-    });
+app.post("/upload", upload.single('product'), (req, res) => {
+    res.json({
+        success : 1,
+        image_url: `http://localhost:${port}/images/${req.file.filename}`
+    })
 });
+
 //Schema for Creating Products
 
 const Product = mongoose.model("Product", {
