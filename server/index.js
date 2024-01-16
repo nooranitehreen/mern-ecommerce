@@ -10,16 +10,10 @@ const { Console, log } = require("console");
 require('dotenv').config();
 const bcrypt = require("bcrypt");
 
-const corsOptions = {
-    origin: ['http://localhost:5173', 'http://localhost:3000',
-    'https://app.netlify.com/teams/nooranitehreen/overview'],
-    credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
-app.options('*', cors(corsOptions));
+
 
 //Database Connection With MongoDB
 mongoose.connect(process.env.MONGODB_URI)

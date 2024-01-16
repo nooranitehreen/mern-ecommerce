@@ -34,7 +34,6 @@ const AddProduct = () => {
                 Accept: 'application/json',
             },
             body: formData,
-            mode: 'cors',
         }).then((resp) => resp.json()).then((data) => {responseData = data});
 
         if(responseData.success) {
