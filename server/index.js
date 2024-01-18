@@ -14,7 +14,6 @@ app.use(cors());
 app.use(express.json());
 
 
-
 //Database Connection With MongoDB
 mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
@@ -47,7 +46,7 @@ app.use('/images', express.static('upload/images'));
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success : 1,
-        image_url: `http://localhost:4000/images/${req.file.filename}`
+        image_url: `http://localhost:${port}/images/${req.file.filename}`
     })
 });
 
@@ -293,7 +292,12 @@ app.post('/removefromcart', fetchUser, authorizeAdmin, async (req, res) => {
 app.post('/getcart', fetchUser, authorizeAdmin, async (req, res) => {
     console.log("GetCart");
     let userData = await Users.findOne({_id: req.user.id});
-    res.json(userData.cartData);
+    if (userData && userData.cartData) {
+        res.json(userData.cartData);
+    } else {
+        // Handle the case where userData or cartData is not available
+        res.status(404).json({ message: "Cart data not found" });
+    }
 });
 
 app.listen(port,(error) => {
