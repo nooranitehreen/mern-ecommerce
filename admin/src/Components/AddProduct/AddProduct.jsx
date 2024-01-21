@@ -78,7 +78,7 @@ const AddProduct = () => {
       </div>
       <div className="addproduct-itemfield">
         <label htmlFor="file-input">
-            <img src={image ? URL.createObjectURL(image): upload_area} className='addproduct-thumbnail-img' alt="" />
+            <img src={image ? 'https://ecommerce-app-b81s.onrender.com': upload_area} className='addproduct-thumbnail-img' alt="" />
         </label>
         <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
       </div>
