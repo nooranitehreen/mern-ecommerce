@@ -42,13 +42,11 @@ const upload = multer({storage : storage});
 
 //Creating Upload Endpoint for images
 app.use('/images', express.static('upload/images'));
-app.use('/images/assets', express.static('admin/src/assets'));
 
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success : 1,
         image_url: `https://ecommerce-app-b81s.onrender.com/images/${req.file.filename}`,
-        asset_url: `https://ecommerce-app-b81s.onrender.com/images/assets/${req.file.filename}`
     });
 });
 
