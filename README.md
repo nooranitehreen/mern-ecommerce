@@ -29,6 +29,7 @@ This repository contains a e-commerce app built using the MERN stack. Please fol
 2. From the admin folder run ``npm run dev``
 3. from the app folder run ``npm start``
 4. from the server folder run ``npm run dev``
+5. to add products the assets images are present in app/frontend/components/assets.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
