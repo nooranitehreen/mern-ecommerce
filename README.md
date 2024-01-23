@@ -32,7 +32,9 @@ This repository contains a e-commerce app built using the MERN stack. Please fol
 5. to add products the assets images are present in app/frontend/components/assets.
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [https://65af91d04fbcb2cc4272a5da--coruscating-puppy-1bf5ca.netlify.app/] and
+[https://65af91b8a99ce4c918649d61--peaceful-fenglisu-a05ddc.netlify.app/]
+ to view it in your browser.
 
 ---
 
