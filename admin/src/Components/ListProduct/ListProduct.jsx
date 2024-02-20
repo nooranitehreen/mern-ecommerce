@@ -5,6 +5,11 @@ import cross_icon from '../../assets/cross_icon.png';
 const ListProduct = () => {
 
     const [allproducts, setAllProducts] = useState([]);
+    
+    const imageUrls = [
+          'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nnnow.com%2Fmen-jackets&psig=AOvVaw3mgPtfoj2OCPf_TydqJ33O&ust=1708531356333000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCOCPmbqluoQDFQAAAAAdAAAAABAE',
+      ];
+  
 
     const fetchInfo = async () => {
         await fetch('https://ecommerce-app-b81s.onrender.com/allproducts')
@@ -44,7 +49,9 @@ const ListProduct = () => {
         {allproducts.map((product, index) => {
             return <>
             <div key={index} className="listproduct-format-main listproduct-format">
-                <img src={product.image} alt="" className="listproduct-product-icon" />
+                {imageUrls.map((imageUrl, index) => (
+                <img key={index} src={imageUrl} alt={`Image ${index}`} className="listproduct-product-icon" />
+                ))}
                 <p>{product.name}</p>
                 <p>${product.old_price}</p>
                 <p>${product.new_price}</p>
