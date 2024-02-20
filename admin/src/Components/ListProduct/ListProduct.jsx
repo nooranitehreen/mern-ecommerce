@@ -5,11 +5,12 @@ import cross_icon from '../../assets/cross_icon.png';
 const ListProduct = () => {
 
     const [allproducts, setAllProducts] = useState([]);
-    
-    const imageUrls = [
-          'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nnnow.com%2Fmen-jackets&psig=AOvVaw3mgPtfoj2OCPf_TydqJ33O&ust=1708531356333000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCOCPmbqluoQDFQAAAAAdAAAAABAE',
-      ];
-  
+    const imageURLs = [
+      'https://drive.google.com/file/d/1jN1Vo_GKj4i9HgEXPxYclDbicxb4WAKD/view?usp=drive_link',
+      'https://drive.google.com/file/d/1p43JhRSvkg9lZVLa4cl4RfyyCHoEB_YS/view?usp=drive_link',
+      'https://drive.google.com/file/d/1f-WRAnQfBRCKLYfVNqN-YPJWGl-fSKHD/view?usp=drive_link',
+      'https://drive.google.com/file/d/1SLEHMQeIHUc_Ylr5wWqxszHAI3jMvNWH/view?usp=drive_link',
+    ];
 
     const fetchInfo = async () => {
         await fetch('https://ecommerce-app-b81s.onrender.com/allproducts')
@@ -49,9 +50,7 @@ const ListProduct = () => {
         {allproducts.map((product, index) => {
             return <>
             <div key={index} className="listproduct-format-main listproduct-format">
-                {imageUrls.map((imageUrl, index) => (
-                <img key={index} src={imageUrl} alt={`Image ${index}`} className="listproduct-product-icon" />
-                ))}
+                <img src={imageURLs[0], imageURLs[1], imageURLs[2], imageURLs[3]} alt="" className="listproduct-product-icon" />
                 <p>{product.name}</p>
                 <p>${product.old_price}</p>
                 <p>${product.new_price}</p>
