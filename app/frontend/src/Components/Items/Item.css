@@ -8,7 +8,6 @@
 
 .item p{
     margin: 6px 0px;
-    text-decoration: none;
 }
 
 .item-prices{
@@ -64,9 +63,6 @@
   .item img{
     width: 170px;
   }
-  .item p{
-    text-decoration: none;
-  }
   .item-price-new{
     font-size: 13px;
   }
@@ -83,9 +79,6 @@
   .item img{
     width: 120px;
   }
-  .item p{
-    text-decoration: none;
-  }
   .item-price-new{
     font-size: 12px;
   }
@@ -100,9 +93,6 @@
   }
   .item img{
     width: 160px;
-  }
-  .item p{
-    text-decoration: none;
   }
 }
 
