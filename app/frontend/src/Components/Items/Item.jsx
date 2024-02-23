@@ -8,7 +8,7 @@ const Item = (props) => {
       <Link to={`/product/${props.id}`}>
         <img onClick={window.scrollTo(0, 0)} src={props.image} alt="" className='image-size' />
       </Link>
-      <p>{props.name}</p>
+      <p onClick={window.scrollTo(0, 0)}>{props.name}</p>
       <div className="item-prices">
         <div className="item-price-new">
             ${props.new_price}
