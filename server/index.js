@@ -11,7 +11,7 @@ require('dotenv').config();
 const bcrypt = require("bcrypt");
 
 app.use(cors());
-app.use(express.static('public', { maxAge: 31536000000 }));
+app.use(express.json());
 
 
 //Database Connection With MongoDB
